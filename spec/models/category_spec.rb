@@ -15,6 +15,7 @@ RSpec.describe Category do
   end
 
   context 'unique fields' do
+    subject { FactoryBot.build(:category) }
     it { is_expected.to validate_uniqueness_of(:title).case_insensitive }
   end
 end

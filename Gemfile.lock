@@ -71,6 +71,11 @@ GEM
     erubi (1.7.1)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_bot (4.10.0)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.10.0)
+      factory_bot (~> 4.10.0)
+      railties (>= 3.0.0)
     ffaker (2.9.0)
     ffi (1.9.25)
     globalid (0.4.1)
@@ -226,6 +231,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   database_cleaner
+  factory_bot_rails
   ffaker
   haml
   haml-rails
