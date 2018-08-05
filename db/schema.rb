@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_27_140605) do
+ActiveRecord::Schema.define(version: 2018_08_05_163147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "author_books", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_author_books_on_author_id"
+    t.index ["book_id"], name: "index_author_books_on_book_id"
+  end
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name", null: false
@@ -21,6 +30,15 @@ ActiveRecord::Schema.define(version: 2018_07_27_140605) do
     t.text "biography"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "book_categories", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_categories_on_book_id"
+    t.index ["category_id"], name: "index_book_categories_on_category_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -64,6 +82,8 @@ ActiveRecord::Schema.define(version: 2018_07_27_140605) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,4 +96,9 @@ ActiveRecord::Schema.define(version: 2018_07_27_140605) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "author_books", "authors"
+  add_foreign_key "author_books", "books"
+  add_foreign_key "book_categories", "books"
+  add_foreign_key "book_categories", "categories"
+  add_foreign_key "reviews", "books"
 end
