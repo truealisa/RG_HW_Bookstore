@@ -10,7 +10,7 @@ RSpec.describe Order do
   context 'associations' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:credit_card) }
-    it { is_expected.to have_many(:ordet_items).dependent(:destroy) }
+    it { is_expected.to have_many(:order_items).dependent(:destroy) }
     it { is_expected.to have_one(:billing_address) }
     it { is_expected.to have_one(:shipping_address) }
   end
