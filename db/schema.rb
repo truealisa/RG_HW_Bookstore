@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_08_204414) do
+ActiveRecord::Schema.define(version: 2018_08_08_210624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 2018_08_08_204414) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "addressable_type"
+    t.bigint "addressable_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
   create_table "author_books", force: :cascade do |t|
@@ -101,9 +104,6 @@ ActiveRecord::Schema.define(version: 2018_08_08_204414) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "credit_card_id"
-    t.string "addressable_type"
-    t.bigint "addressable_id"
-    t.index ["addressable_type", "addressable_id"], name: "index_orders_on_addressable_type_and_addressable_id"
     t.index ["credit_card_id"], name: "index_orders_on_credit_card_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -128,9 +128,6 @@ ActiveRecord::Schema.define(version: 2018_08_08_204414) do
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "addressable_type"
-    t.bigint "addressable_id"
-    t.index ["addressable_type", "addressable_id"], name: "index_users_on_addressable_type_and_addressable_id"
   end
 
   add_foreign_key "author_books", "authors"

@@ -10,6 +10,10 @@ RSpec.describe Address, type: :model do
     it { is_expected.to have_db_column(:type) }
   end
 
+  context 'associations' do
+    it { is_expected.to belong_to(:addressable) }
+  end
+
   context 'required fields' do
     it { is_expected.to validate_presence_of(:local_address) }
     it { is_expected.to validate_presence_of(:zipcode) }

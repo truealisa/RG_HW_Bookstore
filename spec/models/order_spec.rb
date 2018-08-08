@@ -11,8 +11,8 @@ RSpec.describe Order, type: :model do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:credit_card) }
     it { is_expected.to have_many(:order_items).dependent(:destroy) }
-    it { is_expected.to have_one(:billing_address) }
-    it { is_expected.to have_one(:shipping_address) }
+    it { is_expected.to have_one(:billing_address).class_name('BillingAddress') }
+    it { is_expected.to have_one(:shipping_address).class_name('ShippingAddress') }
   end
 
   context 'required fields' do

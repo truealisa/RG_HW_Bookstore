@@ -12,6 +12,8 @@ RSpec.describe User, type: :model do
   context 'associations' do
     it { is_expected.to have_many(:reviews).dependent(:destroy) }
     it { is_expected.to have_many(:orders).dependent(:destroy) }
+    it { is_expected.to have_one(:billing_address).class_name('BillingAddress') }
+    it { is_expected.to have_one(:shipping_address).class_name('ShippingAddress') }
   end
 
   context 'required fields' do
