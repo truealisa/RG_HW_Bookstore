@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Category do
+RSpec.describe Category, type: :model do
   context 'db columns presence' do
     it { is_expected.to have_db_column(:title) }
   end

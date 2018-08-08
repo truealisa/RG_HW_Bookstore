@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Author do
+RSpec.describe Author, type: :model do
   context 'db columns presence' do
     it { is_expected.to have_db_column(:first_name) }
     it { is_expected.to have_db_column(:last_name) }

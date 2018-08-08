@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Book do
+RSpec.describe Book, type: :model do
   context 'db columns presence' do
     it { is_expected.to have_db_column(:title) }
     it { is_expected.to have_db_column(:description) }

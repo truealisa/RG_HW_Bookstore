@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe OrderItem do
+RSpec.describe OrderItem, type: :model do
   context 'db columns presence' do
     it { is_expected.to have_db_column(:price) }
     it { is_expected.to have_db_column(:quantity) }

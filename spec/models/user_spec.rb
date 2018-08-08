@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User do
+RSpec.describe User, type: :model do
   context 'db columns presence' do
     it { is_expected.to have_db_column(:email) }
     it { is_expected.to have_db_column(:password) }
