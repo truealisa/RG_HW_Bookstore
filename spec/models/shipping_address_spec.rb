@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ShippingAddress, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to have_attribute(:type) }
+  it 'inherits from Address' do
+    is_expected.to be_a_kind_of Address
+  end
 end
