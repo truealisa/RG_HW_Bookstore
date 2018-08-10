@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # HAML
 gem 'haml'
 gem 'haml-rails'
+gem 'html2haml'
 
 # Authentication
 gem 'devise'
