@@ -7,14 +7,17 @@ require 'ffaker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+AdminUser.delete_all
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
+Category.delete_all
 Category.create!([
   { title: 'Web Development' },
   { title: 'Web Design' },
   { title: 'Mobile Development' }
 ])
 
+Author.delete_all
 20.times do
   Author.create!([
     { first_name: FFaker::Name.first_name,
@@ -23,6 +26,7 @@ Category.create!([
   ])
 end
 
+Book.delete_all
 25.times do
   Book.create!([
     { title: FFaker::Book.title,
@@ -37,6 +41,7 @@ end
   ])
 end
 
+User.delete_all
 User.create!([
   { email: 'user@example.com',
     password: 'password',
