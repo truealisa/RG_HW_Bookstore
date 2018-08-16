@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_column(:encrypted_password) }
     it { is_expected.to have_db_column(:first_name) }
     it { is_expected.to have_db_column(:last_name) }
-    it { is_expected.to have_db_column(:admin) }
   end
 
   context 'associations' do
