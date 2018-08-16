@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   end
 
   def show    # GET /books/:id
-    # ...
+    @book = Book.find(params[:id])
   end
 
   def new     # GET /books/new
