@@ -10,9 +10,9 @@ require 'ffaker'
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 Category.create!([
-  { name: 'Web Development' },
-  { name: 'Web Design' },
-  { name: 'Mobile Development' }
+  { title: 'Web Development' },
+  { title: 'Web Design' },
+  { title: 'Mobile Development' }
 ])
 
 20.times do
@@ -29,7 +29,7 @@ end
       description: FFaker::Book.description,
       price: rand(10.0..50.0).round(2),
       quantity: rand(0..100),
-      year_of_publication: FFaker::Vehicle.year,
+      year_of_publication: FFaker::Time.date,
       height: rand(6..24),
       width: rand(4..20),
       depth: rand(0.2..4.0).round(1),
