@@ -42,8 +42,8 @@ author_names = [
 
 author_names.each do |name|
   Author.create!([
-    { first_name: name.first,
-      last_name: name.last,
+    { first_name: name[:first],
+      last_name: name[:last],
       biography: FFaker::Lorem.paragraph }
   ])
 end
