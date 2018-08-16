@@ -7,29 +7,68 @@ require 'ffaker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.delete_all
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-Category.delete_all
 Category.create!([
   { title: 'Web Development' },
   { title: 'Web Design' },
   { title: 'Mobile Development' }
 ])
 
-Author.delete_all
-20.times do
+author_names = [
+  { first: 'John', last: 'Horton' },
+  { first: 'Helder', last: 'Vasconcelos' },
+  { first: 'Raul', last: 'Portales' },
+  { first: 'Andrew', last: 'Retallack' },
+  { first: 'Bass', last: 'Jobsen' },
+  { first: 'David', last: 'Cochran' },
+  { first: 'Ian', last: 'Whitley' },
+  { first: 'Paul', last: 'Boag' },
+  { first: 'Dan', last: 'Mantyla' },
+  { first: 'Jon', last: 'Duckett' },
+  { first: 'Alfred', last: 'Nutile' },
+  { first: 'Kyle', last: 'Mew' },
+  { first: 'Dallas', last: 'Snider' },
+  { first: 'Jennifer Niederst', last: 'Robbins' },
+  { first: 'Fernando', last: 'Monteiro' },
+  { first: 'Sammy', last: 'Spets' },
+  { first: 'Web', last: 'community' },
+  { first: 'Ethan', last: 'Marcotte' },
+  { first: 'Lucian', last: 'Gheorghe' },
+  { first: 'Hasin', last: 'Hayder' },
+  { first: 'Joao Prado', last: 'Maia' },
+  { first: 'Jason', last: 'Beaird' }
+]
+
+author_names.each do |name|
   Author.create!([
-    { first_name: FFaker::Name.first_name,
-      last_name: FFaker::Name.last_name,
+    { first_name: name.first,
+      last_name: name.last,
       biography: FFaker::Lorem.paragraph }
   ])
 end
 
-Book.delete_all
-25.times do
+book_names = [ 'Android Programming for Beginners',
+               'Android Programming for Developers',
+               'Arduino to AVR Get Started in 3 Steps',
+               'Bootstrap 4 Site Blueprints',
+               'Digital Adaptation',
+               'Functional Programming in JavaScript',
+               'JavaScript&jQuery interactive front-end web development',
+               'Laravel 5.x Cookbook',
+               'Learning Material Design',
+               'Learning SQL Server 2016 Reporting Services',
+               'Learning Web Design A Beginners Guide to HTML CSS JavaScript and Web Graphics',
+               'Node.js Projects',
+               'Programming Drupal 7 Entities',
+               'Real-Life Responsive Web Design',
+               'Responsive Web Design',
+               'Smarty PHP Template Programming and Applications',
+               'The Principles of Beautiful Web Design' ]
+
+book_names.each do |book_name|
   Book.create!([
-    { title: FFaker::Book.title,
+    { title: book_name,
       description: FFaker::Book.description,
       price: rand(10.0..50.0).round(2),
       quantity: rand(0..100),
@@ -41,7 +80,51 @@ Book.delete_all
   ])
 end
 
-User.delete_all
+AuthorBook.create!([
+  { author_id: 1, book_id: 1 },
+  { author_id: 1, book_id: 2 },
+  { author_id: 2, book_id: 2 },
+  { author_id: 3, book_id: 2 },
+  { author_id: 4, book_id: 3 },
+  { author_id: 5, book_id: 4 },
+  { author_id: 6, book_id: 4 },
+  { author_id: 7, book_id: 4 },
+  { author_id: 8, book_id: 5 },
+  { author_id: 9, book_id: 6 },
+  { author_id: 10, book_id: 7 },
+  { author_id: 11, book_id: 8 },
+  { author_id: 12, book_id: 9 },
+  { author_id: 13, book_id: 10 },
+  { author_id: 14, book_id: 11 },
+  { author_id: 15, book_id: 12 },
+  { author_id: 16, book_id: 13 },
+  { author_id: 17, book_id: 14 },
+  { author_id: 18, book_id: 15 },
+  { author_id: 19, book_id: 16 },
+  { author_id: 20, book_id: 16 },
+  { author_id: 21, book_id: 16 },
+  { author_id: 22, book_id: 17 }
+])
+
+BookCategory.create!([
+  { category_id: 3, book_id: 1 },
+  { category_id: 3, book_id: 2 },
+  { category_id: 1, book_id: 4 },
+  { category_id: 2, book_id: 5 },
+  { category_id: 1, book_id: 6 },
+  { category_id: 1, book_id: 7 },
+  { category_id: 1, book_id: 8 },
+  { category_id: 2, book_id: 9 },
+  { category_id: 1, book_id: 10 },
+  { category_id: 2, book_id: 11 },
+  { category_id: 1, book_id: 12 },
+  { category_id: 1, book_id: 13 },
+  { category_id: 2, book_id: 14 },
+  { category_id: 2, book_id: 15 },
+  { category_id: 1, book_id: 16 },
+  { category_id: 2, book_id: 17 }
+])
+
 User.create!([
   { email: 'user@example.com',
     password: 'password',
