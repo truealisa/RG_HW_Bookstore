@@ -41,11 +41,11 @@ author_names = [
 ]
 
 author_names.each do |name|
-  Author.create!([
-    { first_name: name[:first],
-      last_name: name[:last],
-      biography: FFaker::Lorem.paragraph }
-  ])
+  Author.create!({
+    first_name: name[:first],
+    last_name: name[:last],
+    biography: FFaker::Lorem.paragraph
+  })
 end
 
 book_names = [ 'Android Programming for Beginners',
@@ -66,18 +66,30 @@ book_names = [ 'Android Programming for Beginners',
                'Smarty PHP Template Programming and Applications',
                'The Principles of Beautiful Web Design' ]
 
-book_names.each do |book_name|
-  Book.create!([
-    { title: book_name,
-      description: FFaker::Book.description,
-      price: rand(10.0..50.0).round(2),
-      quantity: rand(0..100),
-      year_of_publication: FFaker::Time.date,
-      height: rand(6..24),
-      width: rand(4..20),
-      depth: rand(0.2..4.0).round(1),
-      materials: FFaker::Lorem.words(2) }
-  ])
+book_names.each_with_index do |book_name, index|
+  book = Book.create({
+    title: book_name,
+    description: FFaker::Book.description,
+    price: rand(10.0..50.0).round(2),
+    quantity: rand(0..100),
+    year_of_publication: FFaker::Time.date,
+    height: rand(6..24),
+    width: rand(4..20),
+    depth: rand(0.2..4.0).round(1),
+    materials: FFaker::Lorem.words(2)
+  })
+
+  file_id = index + 1
+  file_format = if File.file?(Rails.root.join("public/images/#{file_id}.png"))
+    'png'
+  elsif File.file?(Rails.root.join("public/images/#{file_id}.jpg"))
+    'jpg'
+  end
+
+  book.cover.attach(io: File.open(Rails.root.join("public/images/#{file_id}.#{file_format}")),
+                    filename: "#{file_id}.#{file_format}",
+                    content_type: "image/#{file_format}")
+  book.save
 end
 
 AuthorBook.create!([

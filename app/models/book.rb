@@ -5,6 +5,9 @@ class Book < ApplicationRecord
   has_many :categories, through: :book_categories
   has_many :reviews, dependent: :destroy
 
+  has_one_attached :cover
+  has_many_attached :images
+
   validates :title, presence: true
   validates :price, presence: true
   validates :quantity, presence: true

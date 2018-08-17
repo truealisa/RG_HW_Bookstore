@@ -6,7 +6,7 @@
     .col-sm-6
       .product-gallery
         .mb-20
-          %img.img-responsive{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+          = image_tag @book.cover, :class => "img-responsive"
         .images.clearfix
           %a.img-link{href: "#"}
             %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
@@ -17,10 +17,13 @@
     .col-sm-6
       %h1.mt-res-0
         = @book.title
-      %p.lead.small Vitaly Friedman, Daniel Mall,Vitaly Friedman
+      %p.lead.small<
+        - @book.authors.each_with_index do |author, index|
+          = author.first_name + ' ' + author.last_name
+          = ', ' unless author == @book.authors.last
       .row
         .col-xs-12.col-md-4
-          %p.h1.in-gold-500.mt-10 €32.90
+          %p.h1.in-gold-500.mt-10 €#{@book.price}
         .col-xs-5.col-md-3
           .input-group.general-position
             %a.input-link{href: "#"}
