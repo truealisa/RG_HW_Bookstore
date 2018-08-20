@@ -76,7 +76,7 @@ book_names.each_with_index do |book_name, index|
     height: rand(6..24),
     width: rand(4..20),
     depth: rand(0.2..4.0).round(1),
-    materials: FFaker::Lorem.words(2)
+    materials: FFaker::Lorem.words(2).join(', ')
   })
 
   file_id = index + 1
