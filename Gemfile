@@ -50,6 +50,9 @@ gem 'activeadmin'
 # Amazon S3 Service
 gem "aws-sdk-s3", require: false
 
+# FFaker
+gem 'ffaker'
+
 group :development, :test do
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -70,7 +73,6 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'shoulda-matchers'
-  gem 'ffaker'
   gem "factory_bot_rails"
 end
 
